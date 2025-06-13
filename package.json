@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "homepage": "https://github.com/JoyEmmmanuel/shophoria.git"
+    "homepage": "https://joyemmmanuel.github.io/shophoria"
   },
   "dependencies": {
     "framer-motion": "^12.16.0",

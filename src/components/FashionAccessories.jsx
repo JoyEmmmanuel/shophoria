@@ -3,11 +3,18 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../context/useCart";
 import { useState } from "react";
 
-
+import FA1 from "../assets/fashion-accesory/FA1.jpg";
+import FA3 from "../assets/fashion-accesory/FA3.jpg";
+import FA5 from "../assets/fashion-accesory/FA5.jpg";
+import FA6 from "../assets/fashion-accesory/FA6.jpg";
+import FA8 from "../assets/fashion-accesory/FA8.jpg";
+import FA10 from "../assets/fashion-accesory/FA10.jpg"
+import FAcomb1 from "../assets/fashion-accesory/FAcomb1.png";
+import FApacker1 from "../assets/fashion-accesory/FApacker1.png";
 const accessories = [
   {
     id: "FA6",
-    image: "../assets/fashion accesory/FA6.jpg",
+    image: FA6,
     brand: "Nike",
     name: "Baseball cap",
     price: 3000,
@@ -15,7 +22,7 @@ const accessories = [
   },
   {
     id: "FA5",
-    image: "../assets/fashion accesory/FA5.jpg",
+    image: FA5,
     brand: "Sanlee",
     name: "Blue Lens glasses",
     price: 3000,
@@ -23,7 +30,7 @@ const accessories = [
   },
   {
     id: "FA3",
-    image: "../assets/fashion accesory/FA3.jpg",
+    image: FA3,
     brand: "Yiwu",
     name: "Fashion blue sunglasses",
     price: 3000,
@@ -31,7 +38,7 @@ const accessories = [
   },
   {
     id: "FA1",
-    image: "../assets/fashion accesory/FA1.jpg",
+    image: FA1,
     brand: "Yiwu",
     name: "Mini Banana Bag",
     price: 3000,
@@ -39,7 +46,7 @@ const accessories = [
   },
   {
     id: "FA10",
-    image: "../assets/fashion accesory/FA10.jpg",
+    image: FA10,
     brand: "Fashion Jewellery",
     name: "17k MK Set Jewellery",
     price: 3500,
@@ -47,7 +54,7 @@ const accessories = [
   },
   {
     id: "FApacker1",
-    image: "../assets/fashion accesory/FApacker1.png",
+    image: FApacker1,
     brand: "Ore's Accessories",
     name: "Mini silk scrunchies set",
     price: 3000,
@@ -55,7 +62,7 @@ const accessories = [
   },
   {
     id: "FAcomb1",
-    image: "../assets/fashion accesory/FAcomb.png",
+    image: FAcomb1,
     brand: "Ore's Accessories",
     name: "Big hair clips set",
     price: 2000,
@@ -63,7 +70,7 @@ const accessories = [
   },
   {
     id: "FA8",
-    image: "../assets/fashion accesory/FA8.jpg",
+    image: FA8,
     brand: "Yiwu Fashion Jewellery",
     name: "Stainless steel knuckle ring",
     price: 3000,

@@ -2,16 +2,23 @@ import { useState } from "react";
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/useCart";
+import earpodwireless from "../assets/Tech/earpodwireless.jpg";
+import powerbank from "../assets/Tech/powerbank.jpg";
+import amazonmouse from "../assets/Tech/amazonmouse.jpg";
+import phonecase1 from "../assets/Tech/phonecase1.jpg";
+import applewatchseries9 from "../assets/Tech/apple-watch-series9.jpg";
+import JBLspeaker from "../assets/Tech/JBL-speaker.jpg";
+import cameralensprotector from "../assets/Tech/cameralens-protector.jpg";
 
 const products = [
-  { id: "smartwatch", image: "../assets/Tech/reliogio smartwatch.jpg", brand: "Apple", name: "Reliogio Smartwatch", price: 50000 },
-  { id: "mouse", image: "../assets/Tech/amazonmouse.jpg", brand: "Amazon", name: "itel Mousepad", price: 10500 },
-  { id: "cameralens", image: "../assets/Tech/cameralens protector.jpg", brand: "iPhone", name: "Camera lens protector", price: 14500 },
-  { id: "wirelesspod", image: "/assets/Tech/earpodwireless.jpg", brand: "Samsung", name: "Earpod Wireless", price: 12000 },
-  { id: "headphones", image: "../assets/Tech/headphones.jpg", brand: "Oraimo", name: "Headphone M2", price: 8000 },
-  { id: "earpiece", image: "../assets/Tech/ebayearpiece.jpg", brand: "iPhone", name: "Wired Earpiece", price: 3000 },
-  { id: "powerbank", image: "../assets/Tech/powerbank.jpg", brand: "Oraimo", name: "20,000 mAh Powerbank", price: 25000 },
-  { id: "phonecase1", image: "../assets/Tech/phonecase1.jpg", brand: "Shangu", name: "iPhone 11 Pro Phone Case", price: 5000 },
+  { id: "smartwatch", image: applewatchseries9, brand: "Apple", name: "Reliogio Smartwatch", price: 50000 },
+  { id: "mouse", image: amazonmouse, brand: "Amazon", name: "itel Mousepad", price: 10500 },
+  { id: "cameralens", image: cameralensprotector, brand: "iPhone", name: "Camera lens protector", price: 14500 },
+  { id: "wirelesspod", image: earpodwireless, brand: "Samsung", name: "Earpod Wireless", price: 12000 },
+  { id: "spaeaker", image: JBLspeaker, brand: "Oraimo", name: "JBL Speaker", price: 12000 },
+  { id: "earpiece", image: earpodwireless, brand: "iPhone", name: "Wired Earpiece", price: 3000 },
+  { id: "powerbank", image: powerbank, brand: "Oraimo", name: "20,000 mAh Powerbank", price: 25000 },
+  { id: "phonecase1", image: phonecase1, brand: "Shangu", name: "iPhone 11 Pro Phone Case", price: 5000 },
 ];
 
 export default function TechProducts() {

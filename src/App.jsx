@@ -10,27 +10,44 @@ import CartProvider from "./context/CartContext";
 import { products as sampleProducts } from "./data/products";
 import { takeScreenshot } from "./utils/screenshot";
 import ScreenshotButton from "./components/ScreenshotButton";
-// ✅ Voice component
+
+
+
+
 function VoiceScreenshot() {
   useEffect(() => {
-    if (!("webkitSpeechRecognition" in window)) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
       console.warn("Speech recognition not supported in this browser.");
       return;
     }
 
-    const recognition = new window.webkitSpeechRecognition();
+    const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.lang = "en-US";
 
     recognition.onresult = (event) => {
       const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
       console.log("Heard:", transcript);
-      if (transcript.includes("take screenshot") || transcript.includes("screenshot now")) {
+
+      if (
+        transcript.includes("take screenshot") ||
+        transcript.includes("screenshot now") ||
+        transcript.includes("capture screen")
+      ) {
         takeScreenshot("voice");
       }
     };
 
-    recognition.onerror = (err) => console.error("Speech error:", err.error);
+    recognition.onerror = (event) => {
+      if (event.error === "not-allowed") {
+        alert("🎙️ Microphone access denied. Please enable it in your browser settings.");
+      } else {
+        console.error("Speech error:", event.error);
+      }
+    };
+
     recognition.start();
 
     return () => recognition.stop();
@@ -50,25 +67,22 @@ export default function App() {
   }, []);
 
   return (
-  <CartProvider>
-    <Router>
-      <VoiceScreenshot />
-      <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <ScreenshotButton />
-      
-      <Routes>
-        <Route
-          path="/"
-          element={<Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
-        />
-        <Route path="/shop" element={<Shop searchTerm={searchTerm} />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-      </Routes>
-    </Router>
-  </CartProvider>
-);
-
+    <CartProvider>
+      <Router>
+        <VoiceScreenshot />
+        <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <ScreenshotButton />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
+          />
+          <Route path="/shop" element={<Shop searchTerm={searchTerm} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+        </Routes>
+      </Router>
+    </CartProvider>
+  );
 }
-

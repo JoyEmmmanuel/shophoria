@@ -7,16 +7,31 @@ import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { products } from "../data/products";
+import fastshipping from "../assets/features/fastshipping.png";
+import securelogin from "../assets/features/securelogin.png";
+import fastonlineshop from "../assets/features/fastonlineshop.png";
+import competitiveprice from "../assets/features/competitiveprice.png";
+import customerservice from "../assets/features/customerservice.png";
+import exclusiveDeals from "../assets/features/Exclusive deals.png";
+import heroImg from "../assets/hero4.png";
+import fashionBanner from "../assets/banner/b2.jpg";
+import techBanner from "../assets/banner/techbanner1.png";
+import profile1 from "../assets/profile-pic/profile1.png";
+import profile2 from "../assets/profile-pic/profile2.png";
+import profile3 from "../assets/profile-pic/profile3.png";
+import profile4 from "../assets/profile-pic/profile4.png";
+import profile5 from "../assets/profile-pic/profile5.png";
+import profile6 from "../assets/profile-pic/profile6.png";
 
 export default function Home({ searchTerm }) {
-  const features = [
-    ["Fast and Reliable Shipping", "/assets/features/fastshipping.png"],
-    ["Secure Shopping Experience", "/assets/features/securelogin.png"],
-    ["Smooth Online Shopping", "/assets/features/fastonlineshop.png"],
-    ["Competitive Prices & Discount", "/assets/features/competitiveprice.png"],
-    ["Excellent Customer Service", "/assets/features/customerservice.png"],
-    ["Exclusive Deals and Offers", "/assets/features/Exclusive deals.png"],
-  ];
+const features = [
+  ["Fast and Reliable Shipping", fastshipping],
+  ["Secure Shopping Experience", securelogin],
+  ["Smooth Online Shopping", fastonlineshop],
+  ["Competitive Prices & Discount", competitiveprice],
+  ["Excellent Customer Service", customerservice],
+  ["Exclusive Deals and Offers", exclusiveDeals],
+];
 
   const filteredProducts = products.filter((product) =>
     `${product.name} ${product.brand}`.toLowerCase().includes(searchTerm.toLowerCase())
@@ -50,7 +65,7 @@ export default function Home({ searchTerm }) {
       {/* Hero Section */}
       <section
         className="h-[90vh] bg-cover bg-center px-6 md:px-20 flex items-center"
-        style={{ backgroundImage: "url('../assets/hero4.png') " }}
+      style={{ backgroundImage: `url(${heroImg})` }}
       >
         <div className="max-w-xl space-y-4">
           <h4 className="text-[20px] font-medium">Trade-in-offer</h4>
@@ -89,7 +104,7 @@ export default function Home({ searchTerm }) {
       {/* Fashion Banner */}
       <section
         className="flex flex-col justify-center items-center text-center w-full h-[50vh] bg-cover bg-center bg-no-repeat px-[80px] py-[25px]"
-        style={{ backgroundImage: "url('../assets/banner/b2.jpg')" }}
+        style={{ backgroundImage: `url(${fashionBanner})` }}
       >
         <h4 className="text-white text-[18px]">Fashion Accessories Deals</h4>
         <h2 className="text-white text-[30px] py-2">
@@ -109,7 +124,7 @@ export default function Home({ searchTerm }) {
       <section id="sm-banner" className="px-10 md:px-20 py-6">
         <div
           className="w-full h-[50vh] bg-cover bg-center rounded-md"
-          style={{ backgroundImage: "url('../assets/banner/techbanner1.png')" }}
+          style={{ backgroundImage: `url(${techBanner})` }}
         ></div>
       </section>
 
@@ -119,17 +134,17 @@ export default function Home({ searchTerm }) {
   <h2 className="text-center text-3xl font-bold text-gray-800 mb-10">What Our Customers Say</h2>
   <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
     {[
-      { name: "Jane Doe", text: "Absolutely love the service! Delivery was super fast and the product quality is amazing.", img:   "profile1.png" },
-      { name: "Michael Smith", text: "Great prices and smooth checkout. Will definitely shop again!", img: "profile2.png" },
-      { name: " Johnson Walker", text: "Customer service was helpful and friendly. Highly recommend!", img: "profile3.png" },
-      { name: "James Allen", text: "Very satisfied with my order. The packaging was neat and secure.", img: "profile4.png" },
-      { name: "Maxwell Tom", text: "Found exactly what I needed at a great price. Thank you!", img: "profile5.png" },
-      { name: "Whitney Austin", text: "Easy shopping experience. The website is fast and user-friendly.", img: "profile6.png" },
+      { name: "Jane Doe", text: "Absolutely love the service! Delivery was super fast and the product quality is amazing.", img: profile1   },
+      { name: "Michael Smith", text: "Great prices and smooth checkout. Will definitely shop again!", img: profile2 },
+      { name: " Johnson Walker", text: "Customer service was helpful and friendly. Highly recommend!", img: profile3 },
+      { name: "James Allen", text: "Very satisfied with my order. The packaging was neat and secure.", img: profile4 },
+      { name: "Maxwell Tom", text: "Found exactly what I needed at a great price. Thank you!", img: profile5},
+      { name: "Whitney Austin", text: "Easy shopping experience. The website is fast and user-friendly.", img: profile6 },
     ].map((t, idx) => (
       <div key={idx} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
         <div className="flex items-center gap-4 mb-4">
           <img
-  src={`../assets/profile-pic${t.img}`}
+  src={t.img}
   alt={t.name}
   className="w-16 h-16 rounded-full object-cover"
 />

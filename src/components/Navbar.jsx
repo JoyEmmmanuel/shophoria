@@ -12,6 +12,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Navbar({ searchTerm, setSearchTerm }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ const location = useLocation();
        <div className="max-w-[100%] mx-auto flex items-center justify-between h-[80px] md:px-6 lg:px-10">
         {/* Logo */}
        <Link to="/" className="flex items-center pr-2">
-  <img src= "/shophoria/assets/logo.png"alt="Shophoria Logo" className="h-10 w-auto"  />
+  <img src= {logo} alt="Shophoria Logo" className="h-10 w-auto"  />
 </Link>
         {/* Search Bar */}
         <div className="flex flex-grow items-center justify-between mx-2">

@@ -213,7 +213,7 @@ export const products = [
     id: `bag-${i + 1}`,
     brand: `Bag Brand ${i + 1}`,
     name: `Bag Style ${i + 1}`,
-    image: `/shophoria/assets/product image/bag${i + 1}.jpg`,
+    image: `/shophoria/assets/product image/bag${i + 1}.jpg`  , 
     price: 7000 + i * 800,
   })),
 

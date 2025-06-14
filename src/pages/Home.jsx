@@ -50,7 +50,7 @@ export default function Home({ searchTerm }) {
       {/* Hero Section */}
       <section
         className="h-[90vh] bg-cover bg-center px-6 md:px-20 flex items-center"
-        style={{ backgroundImage: "url('/assets/hero4.png')" }}
+        style={{ backgroundImage: "url('/shophoria/assets/hero4.png') " }}
       >
         <div className="max-w-xl space-y-4">
           <h4 className="text-[20px] font-medium">Trade-in-offer</h4>

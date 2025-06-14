@@ -89,7 +89,7 @@ export default function Home({ searchTerm }) {
       {/* Fashion Banner */}
       <section
         className="flex flex-col justify-center items-center text-center w-full h-[50vh] bg-cover bg-center bg-no-repeat px-[80px] py-[25px]"
-        style={{ backgroundImage: "url('/assets/banner/b2.jpg')" }}
+        style={{ backgroundImage: "url('/shophoria/assets/banner/b2.jpg')" }}
       >
         <h4 className="text-white text-[18px]">Fashion Accessories Deals</h4>
         <h2 className="text-white text-[30px] py-2">
@@ -109,7 +109,7 @@ export default function Home({ searchTerm }) {
       <section id="sm-banner" className="px-10 md:px-20 py-6">
         <div
           className="w-full h-[50vh] bg-cover bg-center rounded-md"
-          style={{ backgroundImage: "url('/assets/banner/techbanner1.png')" }}
+          style={{ backgroundImage: "url('/shophoria/assets/banner/techbanner1.png')" }}
         ></div>
       </section>
 
@@ -129,7 +129,7 @@ export default function Home({ searchTerm }) {
       <div key={idx} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
         <div className="flex items-center gap-4 mb-4">
           <img
-  src={`/assets/profile-pic/${t.img}`}
+  src={`/shophoria/assets/profile-pic/${t.img}`}
   alt={t.name}
   className="w-16 h-16 rounded-full object-cover"
 />

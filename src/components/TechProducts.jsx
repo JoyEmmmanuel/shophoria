@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/useCart";
 
 const products = [
-  { id: "smartwatch", image: "/assets/Tech/reliogio smartwatch.jpg", brand: "Apple", name: "Reliogio Smartwatch", price: 50000 },
-  { id: "mouse", image: "/assets/Tech/amazonmouse.jpg", brand: "Amazon", name: "itel Mousepad", price: 10500 },
-  { id: "cameralens", image: "/assets/Tech/cameralens protector.jpg", brand: "iPhone", name: "Camera lens protector", price: 14500 },
+  { id: "smartwatch", image: "../assets/Tech/reliogio smartwatch.jpg", brand: "Apple", name: "Reliogio Smartwatch", price: 50000 },
+  { id: "mouse", image: "../assets/Tech/amazonmouse.jpg", brand: "Amazon", name: "itel Mousepad", price: 10500 },
+  { id: "cameralens", image: "../assets/Tech/cameralens protector.jpg", brand: "iPhone", name: "Camera lens protector", price: 14500 },
   { id: "wirelesspod", image: "/assets/Tech/earpodwireless.jpg", brand: "Samsung", name: "Earpod Wireless", price: 12000 },
-  { id: "headphones", image: "/assets/Tech/headphones.jpg", brand: "Oraimo", name: "Headphone M2", price: 8000 },
-  { id: "earpiece", image: "/assets/Tech/ebayearpiece.jpg", brand: "iPhone", name: "Wired Earpiece", price: 3000 },
-  { id: "powerbank", image: "/assets/Tech/powerbank.jpg", brand: "Oraimo", name: "20,000 mAh Powerbank", price: 25000 },
-  { id: "phonecase1", image: "/assets/Tech/phonecase1.jpg", brand: "Shangu", name: "iPhone 11 Pro Phone Case", price: 5000 },
+  { id: "headphones", image: "../assets/Tech/headphones.jpg", brand: "Oraimo", name: "Headphone M2", price: 8000 },
+  { id: "earpiece", image: "../assets/Tech/ebayearpiece.jpg", brand: "iPhone", name: "Wired Earpiece", price: 3000 },
+  { id: "powerbank", image: "../assets/Tech/powerbank.jpg", brand: "Oraimo", name: "20,000 mAh Powerbank", price: 25000 },
+  { id: "phonecase1", image: "../assets/Tech/phonecase1.jpg", brand: "Shangu", name: "iPhone 11 Pro Phone Case", price: 5000 },
 ];
 
 export default function TechProducts() {

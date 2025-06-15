@@ -3,14 +3,16 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../context/useCart";
 import { useState } from "react";
 
+// Image Imports
 import FA1 from "../assets/fashion-accesory/FA1.jpg";
 import FA3 from "../assets/fashion-accesory/FA3.jpg";
 import FA5 from "../assets/fashion-accesory/FA5.jpg";
 import FA6 from "../assets/fashion-accesory/FA6.jpg";
 import FA8 from "../assets/fashion-accesory/FA8.jpg";
-import FA10 from "../assets/fashion-accesory/FA10.jpg"
+import FA10 from "../assets/fashion-accesory/FA10.jpg";
 import FAcomb1 from "../assets/fashion-accesory/FAcomb1.png";
 import FApacker1 from "../assets/fashion-accesory/FApacker1.png";
+
 const accessories = [
   {
     id: "FA6",
@@ -89,32 +91,32 @@ export default function FashionAccessories() {
   };
 
   return (
-    <section className="text-center px-20 py-[25px]">
-      <h2 className="text-[38px] font-bold text-center">
+    <section className="px-6 md:px-20 py-14 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold">
         Fashion <span className="text-yellow-400">Accessories</span>
       </h2>
       <p className="text-gray-600 mt-2">Top picks for your style</p>
 
-      <div className="flex flex-wrap justify-center gap-4 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
         {accessories.map((item) => (
           <div
             key={item.id}
-            className="w-[250px] border border-green-100 rounded-[25px] p-3 transition-shadow duration-300 hover:shadow-lg"
+            className="border border-green-100 rounded-[25px] p-4 transition-shadow duration-300 hover:shadow-lg"
           >
             <Link to={`/product/${item.id}`}>
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-[300px] object-cover rounded-xl"
+                className="w-full h-[250px] object-cover rounded-xl"
               />
             </Link>
-            <div className="text-start mt-2">
+            <div className="text-start mt-3">
               <span className="text-xs text-gray-600">{item.brand}</span>
-              <h5 className="pt-2 text-sm font-semibold text-gray-900">
+              <h5 className="pt-1 text-sm font-semibold text-gray-900">
                 {item.name}
               </h5>
               <div className="text-orange-500 text-xs flex space-x-1 py-1">
-                {Array(Math.floor(item.rating || 5))
+                {Array(Math.floor(item.rating))
                   .fill()
                   .map((_, i) => (
                     <FaStar key={i} />
@@ -126,9 +128,9 @@ export default function FashionAccessories() {
                 </p>
                 <button
                   onClick={() => handleAddToCart(item)}
-                  className={`text-lg px-2 py-1 rounded transition-all duration-300 ${
+                  className={`text-lg px-3 py-1 rounded transition-all duration-300 ${
                     addedId === item.id
-                      ? "bg-orange-500 text-white text-sm"
+                      ? "bg-orange-500 text-white text-xs"
                       : "text-orange-500 hover:text-orange-600"
                   }`}
                 >
@@ -142,7 +144,7 @@ export default function FashionAccessories() {
 
       <Link
         to="/shop"
-        className="inline-block mt-6 bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-6 py-2 rounded font-semibold transition"
+        className="inline-block mt-10 bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-6 py-2 rounded font-semibold transition"
       >
         See More <i className="fas fa-arrow-right ml-2"></i>
       </Link>

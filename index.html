@@ -11,6 +11,15 @@
  </head>
   <body>
     <div id="root"></div>
+<script>
+  if (location.pathname.startsWith('/shophoria')) {
+    history.replaceState(null, null, '/shophoria/');
+  }
+</script>
+
+
+
     <script type="module" src="/src/main.jsx"></script>
+    
   </body>
 </html>

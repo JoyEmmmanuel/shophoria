@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/useCart";
+
+// Image imports
 import earpodwireless from "../assets/Tech/earpodwireless.jpg";
 import powerbank from "../assets/Tech/powerbank.jpg";
 import amazonmouse from "../assets/Tech/amazonmouse.jpg";
@@ -10,6 +12,7 @@ import applewatchseries9 from "../assets/Tech/apple-watch-series9.jpg";
 import JBLspeaker from "../assets/Tech/JBL-speaker.jpg";
 import cameralensprotector from "../assets/Tech/cameralens-protector.jpg";
 
+// Static tech product list
 const products = [
   { id: "smartwatch", image: applewatchseries9, brand: "Apple", name: "Reliogio Smartwatch", price: 50000 },
   { id: "mouse", image: amazonmouse, brand: "Amazon", name: "itel Mousepad", price: 10500 },
@@ -26,8 +29,8 @@ export default function TechProducts() {
   const [addedProductId, setAddedProductId] = useState(null);
 
   const handleAddToCart = (product, e) => {
-    e.stopPropagation(); // Prevent navigation
-    e.preventDefault();  // Prevent navigation
+    e.stopPropagation();
+    e.preventDefault();
     addToCart(product);
     setAddedProductId(product.id);
     setTimeout(() => setAddedProductId(null), 1000);
@@ -39,33 +42,35 @@ export default function TechProducts() {
         Gadgets & <span className="text-yellow-400">Accessories</span>
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-8 mt-10 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
         {products.map((product) => (
           <Link
             to={`/product/${product.id}`}
             key={product.id}
-            className="w-[250px] border border-green-100 rounded-[25px] p-3 transition-shadow duration-300 hover:shadow-lg cursor-pointer"
+            className="border border-green-100 rounded-[25px] p-4 transition-shadow duration-300 hover:shadow-lg"
           >
             <img
               src={product.image}
               alt={product.name}
-              className="w-full  h-[300px]  object-cover rounded-xl"
+              className="w-full h-[250px] object-cover rounded-xl"
             />
             <div className="text-start mt-3">
               <span className="text-xs text-gray-600">{product.brand}</span>
-              <h5 className="pt-2 text-sm font-semibold">{product.name}</h5>
+              <h5 className="pt-1 text-sm font-semibold">{product.name}</h5>
               <div className="text-orange-500 text-xs flex space-x-1 py-1">
                 {Array(5).fill().map((_, i) => (
                   <FaStar key={i} />
                 ))}
               </div>
-              <div className="flex justify-between items-center">
-                <h4 className="text-base font-bold">₦{product.price.toLocaleString()}</h4>
+              <div className="flex justify-between items-center mt-2">
+                <h4 className="text-base font-bold">
+                  ₦{product.price.toLocaleString()}
+                </h4>
                 <button
                   onClick={(e) => handleAddToCart(product, e)}
-                  className={`text-lg px-2 py-1 rounded transition-all duration-300 ${
+                  className={`text-lg px-3 py-1 rounded transition-all duration-300 ${
                     addedProductId === product.id
-                      ? "bg-orange-500 text-white text-[12px]"
+                      ? "bg-orange-500 text-white text-xs"
                       : "text-orange-500 hover:text-orange-600"
                   }`}
                 >
@@ -79,11 +84,10 @@ export default function TechProducts() {
 
       <Link
         to="/shop"
-        className="inline-block mt-6 bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-6 py-2 rounded font-semibold transition"
+        className="inline-block mt-10 bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-6 py-2 rounded font-semibold transition"
       >
         See More <i className="fas fa-arrow-right ml-2"></i>
       </Link>
     </section>
   );
 }
-

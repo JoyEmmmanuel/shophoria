@@ -1,69 +1,78 @@
 // src/components/Navbar.jsx
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { FaUser, FaChevronDown, FaChevronUp, FaSearch, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { useCart } from "../context/useCart";
-import {
-  FaUser,
-  FaChevronDown,
-  FaChevronUp,
-  FaSearch,
-  FaShoppingCart,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Navbar({ searchTerm, setSearchTerm }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
-const { cartCount } = useCart();
+  const { cartCount } = useCart();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dropdownRef = useRef();
+  const menuRef = useRef();
+
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
   };
-const navigate = useNavigate();
-const location = useLocation();
+
+  const closeMenus = (e) => {
+    if (!dropdownRef.current?.contains(e.target)) {
+      setDropdownOpen(null);
+    }
+    if (!menuRef.current?.contains(e.target)) {
+      setMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeMenus);
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    return () => document.removeEventListener("mousedown", closeMenus);
+  }, [menuOpen]);
+
   return (
-  <header className="bg-white sticky top-0 z-50 shadow px-[50px]  ">
-       <div className="max-w-[100%] mx-auto flex items-center justify-between h-[80px] md:px-6 lg:px-10">
+    <header className="bg-white sticky top-0 z-50 shadow px-4 md:px-[50px]">
+      <div className="flex items-center justify-between h-[80px] max-w-full">
         {/* Logo */}
-       <Link to="/" className="flex items-center pr-2">
-  <img src= {logo} alt="Shophoria Logo" className="h-10 w-auto"  />
-</Link>
-        {/* Search Bar */}
-        <div className="flex flex-grow items-center justify-between mx-2">
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Shophoria Logo" className="h-10 w-auto" />
+        </Link>
+
+        {/* Search Bar (desktop) */}
+        <div className="hidden sm:flex flex-grow items-center justify-center px-4">
           <input
             type="text"
             placeholder="Search products, brands and categories"
             value={searchTerm}
             onChange={(e) => {
-  setSearchTerm(e.target.value);
-  if (location.pathname !== "/shop") navigate("/shop");
-}}
-
-            className="w-full min-w-[400px] px-4 py-2 mr-2 border border-gray-300 rounded-lg outline-none focus:border-orange-500"
-            
+              setSearchTerm(e.target.value);
+              if (location.pathname !== "/shop") navigate("/shop");
+            }}
+            className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg outline-none focus:border-orange-500"
           />
-          <button className=" mr-6 px-[13px] py-[12px] bg-orange-500 hover:bg-orange-600 text-white rounded-xl transition duration-200">
+          <button className="ml-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg">
             <FaSearch />
           </button>
-          
         </div>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-6 items-center font-medium text-gray-800">
-          <li><Link to="/" className="hover:text-orange-500 transition font-bold">Home</Link></li>
- <li><Link to="/shop" className="hover:text-orange-500 transition font-bold">Shop</Link></li>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center space-x-6 font-semibold text-gray-800">
+          <li><Link to="/" className="hover:text-orange-500">Home</Link></li>
+          <li><Link to="/shop" className="hover:text-orange-500">Shop</Link></li>
+
           {/* Account Dropdown */}
-          <li className="relative">
+          <li className="relative" ref={dropdownRef}>
             <button
               onClick={() => toggleDropdown("account")}
-              className="flex items-center gap-1 hover:text-orange-500 transition font-bold"
+              className="flex items-center gap-1 hover:text-orange-500"
             >
               <FaUser /> Account {dropdownOpen === "account" ? <FaChevronUp /> : <FaChevronDown />}
             </button>
             {dropdownOpen === "account" && (
-              <div className="absolute right-0 mt-2 w-48 bg-white shadow-md border rounded-md p-3 z-10 animate-fade font-bold">
+              <div className="absolute right-0 mt-2 w-48 bg-white shadow-md border rounded-md p-3 z-50">
                 <Link to="/signin" className="block py-1 hover:text-orange-500">Sign-In</Link>
                 <Link to="/profile" className="block py-1 hover:text-orange-500">My Profile</Link>
                 <Link to="/orders" className="block py-1 hover:text-orange-500">Orders</Link>
@@ -74,15 +83,15 @@ const location = useLocation();
           </li>
 
           {/* Help Dropdown */}
-          <li className="relative">
+          <li className="relative" ref={dropdownRef}>
             <button
               onClick={() => toggleDropdown("help")}
-              className="flex items-center gap-1 hover:text-orange-500 transition font-bold"
+              className="flex items-center gap-1 hover:text-orange-500"
             >
               Help {dropdownOpen === "help" ? <FaChevronUp /> : <FaChevronDown />}
             </button>
             {dropdownOpen === "help" && (
-              <div className="absolute right-0 mt-2 w-52 bg-white shadow-md border rounded-md p-3 z-10 animate-fade">
+              <div className="absolute right-0 mt-2 w-52 bg-white shadow-md border rounded-md p-3 z-50">
                 <Link to="/payment" className="block py-1 hover:text-orange-500">Payment Options</Link>
                 <Link to="/help-center" className="block py-1 hover:text-orange-500">Help Center</Link>
                 <Link to="/faq" className="block py-1 hover:text-orange-500">Cancel an Order</Link>
@@ -92,36 +101,54 @@ const location = useLocation();
             )}
           </li>
 
+          {/* Cart */}
           <li className="relative">
-  <Link to="/cart" className="flex items-center gap-1 hover:text-orange-500 transition font-bold">
-    <FaShoppingCart className="text-xl" />
-    Cart
-    {cartCount > 0 && (
-      <span className="absolute -top-2 -right-3 bg-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
-        {cartCount}
-      </span>
-    )}
-  </Link>
-</li>
-
+            <Link to="/cart" className="flex items-center gap-1 hover:text-orange-500">
+              <FaShoppingCart className="text-xl" /> Cart
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-3 bg-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          </li>
         </ul>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden text-xl" onClick={() => setMenuOpen(!menuOpen)}>
+        {/* Mobile Menu Toggle */}
+        <button className="md:hidden text-xl z-50" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-gray-100 px-6 pb-4 space-y-2 animate-fade">
-          <Link to="/" className="block py-1">Home</Link>
-          <Link to="/cart" className="block py-1">Cart</Link>
-          <Link to="/signin" className="block py-1">Sign In</Link>
-          <Link to="/help-center" className="block py-1">Help Center</Link>
+      {/* Search Bar (mobile) */}
+      <div className="sm:hidden px-4 pb-2">
+        <input
+          type="text"
+          placeholder="Search products"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            if (location.pathname !== "/shop") navigate("/shop");
+          }}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none focus:border-orange-500"
+        />
+      </div>
+
+      {/* Mobile Slide-in Menu */}
+      <div
+        ref={menuRef}
+        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-40 transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out md:hidden`}
+      >
+        <div className="p-6 space-y-4">
+          <Link to="/" onClick={() => setMenuOpen(false)} className="block font-medium">Home</Link>
+          <Link to="/shop" onClick={() => setMenuOpen(false)} className="block font-medium">Shop</Link>
+          <Link to="/cart" onClick={() => setMenuOpen(false)} className="block font-medium">Cart</Link>
+          <Link to="/signin" onClick={() => setMenuOpen(false)} className="block font-medium">Sign In</Link>
+          <Link to="/help-center" onClick={() => setMenuOpen(false)} className="block font-medium">Help Center</Link>
         </div>
-      )}
-      
+      </div>
     </header>
   );
 }

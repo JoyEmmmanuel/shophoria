@@ -1,4 +1,3 @@
-// src/components/ProductCard.jsx
 import { FaShoppingCart, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useCart } from "../context/useCart";
 import { useState } from "react";
@@ -46,7 +45,9 @@ export default function ProductCard({ id, image, brand, name, price, rating = 5 
         </div>
 
         <div className="flex justify-between items-center mt-1">
-          <h4 className="text-sm sm:text-base font-bold">₦{price.toLocaleString()}</h4>
+          <h4 className="text-sm sm:text-base font-bold">
+            ₦{typeof price === "number" ? price.toLocaleString() : "N/A"}
+          </h4>
           <button
             onClick={handleAddToCart}
             aria-label="Add to cart"

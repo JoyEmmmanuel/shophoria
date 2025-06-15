@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import { products as productData } from "../data/products";
 
 export default function Shop() {

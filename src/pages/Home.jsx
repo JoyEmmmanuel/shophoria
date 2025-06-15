@@ -3,22 +3,19 @@ import FeaturedProducts from "../components/Featuredproducts";
 import FashionAccessories from "../components/FashionAccessories";
 import TechProducts from "../components/TechProducts";
 import Newsletter from "../components/Newsletter";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { products } from "../data/products";
-
+import heroImg from "../assets/hero4.png";
 import fastshipping from "../assets/features/fastshipping.png";
 import securelogin from "../assets/features/securelogin.png";
 import fastonlineshop from "../assets/features/fastonlineshop.png";
 import competitiveprice from "../assets/features/competitiveprice.png";
 import customerservice from "../assets/features/customerservice.png";
-import exclusiveDeals from "../assets/features/Exclusive deals.png";
-
-import heroImg from "../assets/hero4.png";
+import exclusiveDeals from "../assets/features/exclusiveDeals.png";
 import fashionBanner from "../assets/banner/b2.jpg";
 import techBanner from "../assets/banner/techbanner1.png";
-
 import profile1 from "../assets/profile-pic/profile1.png";
 import profile2 from "../assets/profile-pic/profile2.png";
 import profile3 from "../assets/profile-pic/profile3.png";
@@ -65,17 +62,23 @@ export default function Home({ searchTerm }) {
 
       {/* Hero Section */}
       <section
-        className="h-[90vh] bg-cover bg-center px-4 sm:px-6 md:px-20 flex items-center"
+        className="min-h-screen bg-cover bg-center bg-no-repeat px-4 sm:px-6 md:px-20 flex items-center justify-between"
         style={{ backgroundImage: `url(${heroImg})` }}
       >
-        <div className="max-w-xl space-y-4">
-          <h4 className="text-lg font-medium">Trade-in-offer</h4>
-          <h2 className="text-3xl sm:text-4xl font-bold">Discover Quality Products</h2>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-orange-500">at Unbeatable Prices</h1>
-          <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-            Explore a wide selection of top-notch items across various categories.<br />
-            Enjoy fast shipping, secure shopping, and excellent customer service.<br />
-            <span className="text-orange-500 font-semibold">
+    <div className="max-w-xl w-full space-y-4 text-left">
+          <h4 className="text-md font-medium text-gray-700"> Trade-in Offer</h4>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            Discover Quality Products
+          </h2>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-orange-500">
+            at Unbeatable Prices
+          </h1>
+          <p className="  text-gray-800 leading-relaxed">
+            Explore a wide selection of top-notch items across various categories.
+            <br />
+            Enjoy fast shipping, secure shopping, and excellent customer service.
+            <br />
+            <span className="text-gray-800 font-semibold">
               Shop with confidence and elevate your shopping experience today!
             </span>
           </p>
@@ -122,7 +125,7 @@ export default function Home({ searchTerm }) {
       <FashionAccessories />
 
       {/* Tech Banner */}
-      <section id="sm-banner" className="px-4 sm:px-10 md:px-20 py-6">
+      <section className="px-4 sm:px-10 md:px-20 py-6">
         <div
           className="w-full h-[50vh] bg-cover bg-center rounded-md"
           style={{ backgroundImage: `url(${techBanner})` }}
@@ -147,7 +150,7 @@ export default function Home({ searchTerm }) {
               <div className="flex items-center gap-4 mb-4">
                 <img
                   src={t.img}
-                  alt={t.name}
+                  alt={`${t.name}'s profile picture`}
                   loading="lazy"
                   className="w-16 h-16 rounded-full object-cover"
                 />
@@ -167,4 +170,5 @@ export default function Home({ searchTerm }) {
     </div>
   );
 }
+
 

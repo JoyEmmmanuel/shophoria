@@ -1,45 +1,33 @@
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaStar } from "react-icons/fa";
-import { useCart } from "../context/useCart";
-import { useState } from "react";
+import { FaStar } from "react-icons/fa";
+import { products } from "../data/products"; // ✅ Corrected import
+import ProductCard from "./ProductCard";     // ✅ Using your existing component
 
-export default function ProductCard({ id, image, brand, name, price }) {
-  const { addToCart } = useCart();
-  const [added, setAdded] = useState(false);
-
-  const handleAdd = (e) => {
-    e.preventDefault();
-    addToCart({ id, image, brand, name, price });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1000);
-  };
+export default function FeaturedProducts() {
+  const featured = products.slice(0, 8); // Display top 8 featured items
 
   return (
-    <Link
-      to={`/product/${id}`}
-      className="w-[250px] border border-green-100 rounded-[25px] p-3 transition-shadow duration-300 hover:shadow-lg"
-    >
-      <img src={image} alt={name} className="w-full h-[300px] object-cover rounded-xl" />
-      <div className="text-start mt-3">
-        <span className="text-xs text-gray-600">{brand}</span>
-        <h5 className="pt-2 text-sm font-semibold">{name}</h5>
-        <div className="text-orange-500 text-xs flex space-x-1 py-1">
-          {Array(5).fill().map((_, i) => <FaStar key={i} />)}
-        </div>
-        <div className="flex justify-between items-center">
-          <p className="text-base font-bold">₦{price.toLocaleString()}</p>
-          <button
-            onClick={handleAdd}
-            className={`text-lg px-2 py-1 rounded transition-all duration-300 ${
-              added
-                ? "bg-orange-500 text-white text-sm"
-                : "text-orange-500 hover:text-orange-600"
-            }`}
-          >
-            {added ? "Added" : <FaShoppingCart />}
-          </button>
-        </div>
+    <section className="py-10 px-6 sm:px-10 md:px-20 bg-gray-50">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">
+        Featured Products
+      </h2>
+
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center">
+        {featured.map((product) => (
+          <ProductCard
+            key={product.id}
+            id={product.id}
+            image={product.image}
+            brand={product.brand}
+            name={product.name}
+            price={product.price}
+            rating={product.rating} // optional if you support rating
+          />
+        ))}
       </div>
-    </Link>
+    </section>
   );
 }
+
+
+

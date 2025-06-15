@@ -1,6 +1,6 @@
 // src/pages/Cart.jsx
 import { useCart } from "../context/useCart";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 export default function Cart() {

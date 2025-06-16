@@ -3,7 +3,7 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/useCart";
 
-// Image imports
+
 import earpodwireless from "../assets/Tech/earpodwireless.jpg";
 import powerbank from "../assets/Tech/powerbank.jpg";
 import amazonmouse from "../assets/Tech/amazonmouse.jpg";
@@ -12,7 +12,7 @@ import applewatchseries9 from "../assets/Tech/apple-watch-series9.jpg";
 import JBLspeaker from "../assets/Tech/JBL-speaker.jpg";
 import cameralensprotector from "../assets/Tech/cameralens-protector.jpg";
 
-// Static tech product list
+
 const products = [
   { id: "smartwatch", image: applewatchseries9, brand: "Apple", name: "Reliogio Smartwatch", price: 50000 },
   { id: "mouse", image: amazonmouse, brand: "Amazon", name: "itel Mousepad", price: 10500 },

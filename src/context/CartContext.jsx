@@ -1,4 +1,4 @@
-// src/context/CartContext.jsx
+
 import { useState } from "react";
 import { CartContext } from "./CartContextStore";
 

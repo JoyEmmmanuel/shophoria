@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-import { products } from "../data/products"; // ✅ Corrected import
-import ProductCard from "./ProductCard";     // ✅ Using your existing component
+import { products } from "../data/products"; 
+import ProductCard from "./ProductCard";     
 
 export default function FeaturedProducts() {
-  const featured = products.slice(0, 8); // Display top 8 featured items
+  const featured = products.slice(0, 8); 
 
   return (
     <section className="py-10 px-6 sm:px-10 md:px-20 bg-gray-50">
@@ -21,7 +21,7 @@ export default function FeaturedProducts() {
             brand={product.brand}
             name={product.name}
             price={product.price}
-            rating={product.rating} // optional if you support rating
+            rating={product.rating} 
           />
         ))}
       </div>
